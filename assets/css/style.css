@@ -1,4 +1,13 @@
 .jumbotron, .card-header, .btn {
   background-color: lightcoral;
   color: white;
+  font-family: 'Lora', serif;
+}
+
+.table, .form-group {
+  font-family: 'Montserrat', sans-serif;
+}
+
+th {
+  font-weight: 600;
 }

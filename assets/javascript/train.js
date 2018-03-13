@@ -19,7 +19,7 @@
    // Grabbed values from text boxes
    var trainName = $("#train-input").val().trim();
    var destination = $("#destination-input").val().trim();
-   var time = $("#time-input").val().trim();
+   var firstTrain = $("#firstTrain-input").val().trim();
    var frequency = parseInt($("#frequency-input").val().trim());
 
    console.log(trainName, destination, time, frequency);
@@ -28,7 +28,7 @@
    database.ref().push({
      trainName: trainName,
      destination: destination,
-     time: time,
+     firstTrain: firstTrain,
      frequency: frequency,
      dateAdded: firebase.database.ServerValue.TIMESTAMP
    });
@@ -43,24 +43,24 @@
 
    var trainName = childSnapshot.val().trainName;
    var destination = childSnapshot.val().destination;
-   var time = childSnapshot.val().time;
+  //  var time = childSnapshot.val().time;
    var frequency = childSnapshot.val().frequency;
 
-   //get number of months since startDate
-   var totalMonths = moment().diff(moment(startDate), "months");
+   //military time
+   var firstTrain = moment().format("HH:mm");
 
-   var totalRate = parseInt(totalMonths) * parseInt(rate);
+  //  var totalRate = parseInt(totalMonths) * parseInt(rate);
 
-   var tr = $("<tr>");
-   var tdName = $("<td>").text(name);
-   var tdRole = $("<td>").text(role);
-   var tdStartDate = $("<td>").text(startDate);
-   var tdMonths = $("<td>").text(totalMonths);
-   var tdRate = $("<td>").text(rate);
-   var tdTotal = $("<td>").text('$' + totalRate);
+  //  var tr = $("<tr>");
+  //  var tdName = $("<td>").text(name);
+  //  var tdDestination = $("<td>").text(destination);
+  //  var tdTime = $("<td>").text(time);
+  //  var tdMonths = $("<td>").text(totalMonths);
+  //  var tdRate = $("<td>").text(rate);
+  //  var tdTotal = $("<td>").text('$' + totalRate);
 
-   tr.append(tdName, tdRole, tdStartDate, tdMonths, tdRate, tdTotal);
-   $("#data-goes-here").append(tr);
+  //  tr.append(tdName, tdRole, tdStartDate, tdMonths, tdRate, tdTotal);
+  //  $("#train-schedule").append(tr);
 
 
    // Handle the errors

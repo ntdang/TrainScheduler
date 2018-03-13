@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Lora|Montserrat:400,600" rel="stylesheet">
   <link rel="stylesheet" href="./assets/css/style.css">
   <title>Train Scheduler</title>
 </head>
@@ -30,7 +31,7 @@
               <th scope="col">Minutes Away</th>
             </tr>
           </thead>
-          <tbody id="data-goes-here">
+          <tbody id="train-schedule">
 
           </tbody>
         </table>
@@ -52,7 +53,7 @@
           </div>
           <div class="form-group">
             <label>First Train Time (HH:mm - military time)</label>
-            <input type="text" class="form-control" id="time-input" aria-describedby="start" placeholder="Enter in HH:mm">
+            <input type="text" class="form-control" id="firstTrain-input" aria-describedby="start" placeholder="Enter in HH:mm">
           </div>
           <div class="form-group">
             <label>Frequency (min)</label>
@@ -60,7 +61,7 @@
 
           </div>
 
-          <button type="submit" class="btn btn-primary" id="submit-form">Submit</button>
+          <button type="submit" class="btn" id="submit-form">Submit</button>
         </form>
       </div>
     </div>
