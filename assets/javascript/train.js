@@ -77,7 +77,7 @@
    console.log("Minutes til train: " + tMinTilTrain);
 
    //next train
-   var nextTrain = moment().add(tMinTilTrain, "minutes").format("h:mm:a");
+   var nextTrain = moment().add(tMinTilTrain, "minutes").format("h:mm a");
    console.log("Arrival time: " + nextTrain);
 
 
