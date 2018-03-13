@@ -22,7 +22,7 @@
    var firstTrain = $("#firstTrain-input").val().trim();
    var frequency = parseInt($("#frequency-input").val().trim());
 
-   console.log(trainName, destination, time, frequency);
+   console.log(trainName, destination, firstTrain, frequency);
 
    // Code for handling the push
    database.ref().push({
@@ -43,24 +43,43 @@
 
    var trainName = childSnapshot.val().trainName;
    var destination = childSnapshot.val().destination;
-  //  var time = childSnapshot.val().time;
+   var firstTrain = childSnapshot.val().firstTrain;
    var frequency = childSnapshot.val().frequency;
 
    //military time
-   var firstTrain = moment().format("HH:mm");
+   var firstTrainConverted = moment(firstTrain, "HH:mm").subtract(1, "years");
+   console.log(firstTrainConverted)
 
-  //  var totalRate = parseInt(totalMonths) * parseInt(rate);
+  //current time
+  var currentTime = moment();
+  console.log("Current time: " + moment(currentTime).format("HH:mm"));
 
-  //  var tr = $("<tr>");
-  //  var tdName = $("<td>").text(name);
-  //  var tdDestination = $("<td>").text(destination);
-  //  var tdTime = $("<td>").text(time);
-  //  var tdMonths = $("<td>").text(totalMonths);
-  //  var tdRate = $("<td>").text(rate);
-  //  var tdTotal = $("<td>").text('$' + totalRate);
+  //difference in times
+  var diffTime = moment().diff(moment(firstTrainConverted), "minutes");
+  console.log("Difference in time: " + diffTime);
 
-  //  tr.append(tdName, tdRole, tdStartDate, tdMonths, tdRate, tdTotal);
-  //  $("#train-schedule").append(tr);
+  //time apart
+  var tRemainder = diffTime % frequency
+  console.log(tRemainder);
+
+  //minutes until train
+  var tMinTilTrain = frequency - tRemainder;
+  console.log("Minutes til train: " + tMinTilTrain);
+
+  //next train
+  var nextTrain = moment().add(tMinTilTrain, "minutes").format("h:mm:a");
+  console.log("Arrival time: " + moment(nextTrain).format("HH:mm"));
+
+
+   var tr = $("<tr>");
+   var tdName = $("<td>").text(trainName);
+   var tdDestination = $("<td>").text(destination);
+   var tdFrequency = $("<td>").text(frequency);
+   var tdNextArrival = $("<td>").text(nextTrain);
+   var tdMinAway = $("<td>").text(tMinTilTrain);
+
+   tr.append(tdName, tdDestination, tdFrequency, tdNextArrival, tdMinAway);
+   $("#train-schedule").append(tr);
 
 
    // Handle the errors
