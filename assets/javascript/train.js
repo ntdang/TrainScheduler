@@ -16,6 +16,12 @@
  $("#submit-form").on("click", function (event) {
    event.preventDefault();
 
+   if ($('#train-input, #destination-input, #firstTrain-input, #frequency-input').val() === '') {
+     $('#train-input, #destination-input, #firstTrain-input, #frequency-input').addClass('is-invalid');
+     return false;
+   }
+   $('#train-input, #destination-input, #firstTrain-input, #frequency-input').removeClass('is-invalid');
+
    // Grabbed values from text boxes
    var trainName = $("#train-input").val().trim();
    var destination = $("#destination-input").val().trim();
