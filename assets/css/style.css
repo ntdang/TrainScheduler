@@ -1,5 +1,5 @@
 .jumbotron, .card-header, .btn {
-  background-color: lightcoral;
+  background-color: rgb(218, 106, 32);
   color: white;
   font-family: 'Lora', serif;
 }
@@ -10,4 +10,8 @@
 
 th {
   font-weight: 600;
+}
+
+body {
+  background-image: url("../images/Tracks2.jpg");
 }
